@@ -2,9 +2,19 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
   "author": "3zz",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "@babel/core": "^7.4.4",
+    "babel-loader": "^8.0.5",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "express": "^4.16.4",
+    "react": "^16.8.6",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2"
   }
 }
