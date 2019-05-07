@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch build --exec node \"./build/bundle.js\"",
-    "build": "webpack --config webpack.server.js --watch"
+    "dev": "npm-run-all --parallel dev:**",
+    "dev:start": "nodemon --watch build --exec node \"./build/bundle.js\"",
+    "dev:build": "webpack --config webpack.server.js --watch"
   },
   "author": "3zz",
   "license": "MIT",
@@ -16,6 +17,7 @@
     "babel-loader": "^8.0.5",
     "express": "^4.16.4",
     "nodemon": "^1.19.0",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "webpack": "^4.30.0",

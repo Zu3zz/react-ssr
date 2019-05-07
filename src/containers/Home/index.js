@@ -2,7 +2,12 @@ import React from 'react';
 // const React = require('react');
 
 const Home = () => {
-  return <div>welcome to 3zzzzz‘s home!</div>
+  return(
+    <div>
+      <div>welcome to 3zz‘s home!</div>
+      <button onClick={() => {alert('click')}}>click</button>
+    </div>
+  )
 }
 
 export default Home;
