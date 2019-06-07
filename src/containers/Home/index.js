@@ -1,4 +1,5 @@
 import React from 'react';
+// 同构: 一套react代码在服务器和浏览器端各执行一遍
 // const React = require('react');
 
 const Home = () => {
