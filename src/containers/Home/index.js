@@ -1,22 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 // 同构: 一套react代码在服务器和浏览器端各执行一遍
 // const React = require('react');
 import Header from '../../components/Header'
 import {connect} from 'react-redux'
+import { getHomeList } from './store/actions'
 
-const Home = (props) => {
-  return(
-    <div>
-      <Header />
-      <div>welcome to {props.name} home!</div>
-      <button onClick={() => {alert('click')}}>click</button>
-    </div>
-  )
+class Home extends Component {
+  
+  getList() {
+    const {list} = this.props
+    return list.map(item => <div key={item.docid}>{item.title}</div>)
+  }
+  
+  render() {
+    return(
+      <div>
+        <Header />
+        <div>welcome to {this.props.name} home!</div>
+        {this.getList()}
+        <button onClick={() => {alert('click')}}>click</button>
+      </div>
+    )
+  }
+  
+  componentDidMount() {
+    this.props.getHomeList()
+  }
 }
+
 const mapStateToProps = state => ({
-  name: state.name
+  list: state.home.newsList,
+  name: state.home.name
 })
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = dispatch => ({
+  getHomeList() {
+    dispatch(getHomeList())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 // module.exports = {
 //   default: Home
 // }
