@@ -3751,6 +3751,13 @@ react-redux@^7.0.3:
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
+react-router-config@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.npm.taobao.org/react-router-config/download/react-router-config-5.0.1.tgz#e6663010f42aa5e39c2f21412d8f958f6866e48a"
+  integrity sha1-5mYwEPQqpeOcLyFBLY+Vj2hm5Io=
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+
 react-router-dom@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npm.taobao.org/react-router-dom/download/react-router-dom-5.0.1.tgz#ee66f4a5d18b6089c361958e443489d6bab714be"
