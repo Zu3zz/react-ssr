@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { CHANGE_LIST } from './constants'
+import clientAxios from '../../../client/request'
+import serverAxios from '../../../server/request'
 
 const changeList = (list) => ({
   type: CHANGE_LIST,
@@ -8,15 +10,12 @@ const changeList = (list) => ({
 
 
 export const getHomeList = (server) => {
-  let url = ''
-  if(server) {
-    url = 'https://www.apiopen.top/journalismApi'
-  } else {
-    url = '/api'
-  }
+  // server = 'https://www.apiopen.top'
+  // client = '/'
+  const request = server ? serverAxios : clientAxios
   // https://www.apiopen.top/journalismApi
   return (dispatch) => {
-    return axios.get(url)
+    return request.get('/journalismApi')
       .then((res) => {
         const list = res.data.data.toutiao
         dispatch(changeList(list))

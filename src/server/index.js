@@ -8,7 +8,7 @@ import {matchRoutes} from "react-router-config"
 import routes from "../Routes"
 const app = express()
 app.use(express.static('public'))
-app.use('/api', proxy('https://www.apiopen.top', {
+app.use('/journalismApi', proxy('https://www.apiopen.top', {
   proxyReqPathResolver: function () {
     return '/journalismApi'
   }
