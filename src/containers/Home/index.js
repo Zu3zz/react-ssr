@@ -8,7 +8,7 @@ class Home extends Component {
   
   getList() {
     const {list} = this.props
-    return list.map(item => <div key={item.docid}>{item.title}</div>)
+    return list.map(item => <div key={item.id}>{item.title}</div>)
   }
   
   render() {
@@ -23,13 +23,13 @@ class Home extends Component {
   
   componentDidMount() {
     if (!this.props.list.length) {
-      this.props.getHomeList(false)
+      this.props.getHomeList()
     }
   }
 }
 Home.loadData = (store) => {
   // 负责在服务器端渲染之前，把这个路由需要的数据提前加载好
-  return store.dispatch(getHomeList(true))
+  return store.dispatch(getHomeList())
 }
 
 const mapStateToProps = state => ({

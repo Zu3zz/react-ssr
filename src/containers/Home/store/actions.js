@@ -11,9 +11,9 @@ export const getHomeList = () => {
   // client = '/'
   // https://www.apiopen.top/journalismApi
   return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get('/journalismApi')
+    return axiosInstance.get('/api/news.json?secret=PP87ANTIPIRATE')
       .then((res) => {
-        const list = res.data.data.toutiao
+        const list = res.data.data
         dispatch(changeList(list))
       })
   }

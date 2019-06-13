@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://www.apiopen.top'
+  baseURL: 'http://47.95.113.63/ssr'
 })
 
 export default instance;
