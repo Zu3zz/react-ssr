@@ -1,12 +1,18 @@
 import express from 'express'
-// const express = require('express');
 import proxy from 'express-http-proxy'
-// ReactDom.render(<Home />, document.getElementById('root'))
-import { render } from './utils'
-import { getStore } from "../store"
-import {matchRoutes} from "react-router-config"
+import {
+  render
+} from './utils'
+import {
+  getStore
+} from "../store"
+import {
+  matchRoutes
+} from "react-router-config"
 import routes from "../Routes"
+
 const app = express()
+
 app.use(express.static('public'))
 app.use('/api', proxy('http://47.95.113.63', {
   proxyReqPathResolver: function (req) {
@@ -26,7 +32,14 @@ app.get('*', function (req, res) {
     }
   })
   Promise.all(promises).then(() => {
-    res.send(render(store, routes, req))
+    const context = {}
+    const html = render(store, routes, req, context)
+    if (context.NOT_FOUND) {
+      res.status(404)
+      res.send(html)
+    } else {
+      res.send(html)
+    }
   })
 })
 

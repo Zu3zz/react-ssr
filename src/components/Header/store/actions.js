@@ -1,31 +1,34 @@
-import {
-  CHANGE_LOGIN
-} from './constants'
+import { CHANGE_LOGIN } from './constants'
 
-const changeLogin = (value) => ({
+export const changeLogin = (value) => ({
   type: CHANGE_LOGIN,
   value
 })
-export const login = () => {
-  return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get('/api/login.json?secret=PP87ANTIPIRATE')
+
+export const login = () => { // async
+  return (dispatch, getState, axiosInstance) => { // axiosInstance： withExtraArgument 传递的参数
+    return axiosInstance
+      .get('/api/login.json?secret=PP87ANTIPIRATE')
       .then((res) => {
         dispatch(changeLogin(true))
       })
   }
 }
-export const logout = () => {
-  return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get('/api/logout.json?secret=PP87ANTIPIRATE')
+
+export const logout = () => { // async
+  return (dispatch, getState, axiosInstance) => { // axiosInstance： withExtraArgument 传递的参数
+    return axiosInstance
+      .get('/api/logout.json?secret=PP87ANTIPIRATE')
       .then((res) => {
         dispatch(changeLogin(false))
       })
   }
 }
 
-export const getHeaderInfo = () => {
-  return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get('/api/isLogin.json?secret=PP87ANTIPIRATE')
+export const getHeaderInfo = () => { // async
+  return (dispatch, getState, axiosInstance) => { // axiosInstance： withExtraArgument 传递的参数
+    return axiosInstance
+      .get('/api/isLogin.json?secret=PP87ANTIPIRATE')
       .then((res) => {
         dispatch(changeLogin(res.data.data.login))
       })
