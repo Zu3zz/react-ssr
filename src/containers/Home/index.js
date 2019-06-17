@@ -34,10 +34,6 @@ class Home extends Component {
     }
   }
 }
-Home.loadData = (store) => {
-  // 负责在服务器端渲染之前，把这个路由需要的数据提前加载好
-  return store.dispatch(getHomeList())
-}
 
 const mapStateToProps = state => ({
   list: state.home.newsList,
@@ -48,8 +44,13 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getHomeList())
   }
 })
+const ExportHome = connect(mapStateToProps, mapDispatchToProps)(Home)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+ExportHome.loadData = (store) => {
+  // 负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+  return store.dispatch(getHomeList())
+}
+export default ExportHome
 // module.exports = {
 //   default: Home
 // }
