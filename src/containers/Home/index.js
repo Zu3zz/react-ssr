@@ -3,8 +3,15 @@ import React, { Component } from 'react';
 // const React = require('react');
 import {connect} from 'react-redux'
 import { getHomeList } from './store/actions'
+import styles from './style.css'
 
 class Home extends Component {
+  componentWillMount() {
+    if (this.props.staticContext){
+      this.props.staticContext.css.push(styles._getCss())
+    }
+  }
+  
   
   getList() {
     const {list} = this.props
