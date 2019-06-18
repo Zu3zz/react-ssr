@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 // 同构: 一套react代码在服务器和浏览器端各执行一遍
 // const React = require('react');
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 import { getHomeList } from './store/actions'
 import styles from './style.css'
 import withStyles from '../../withStyle'
@@ -15,11 +16,26 @@ class Home extends Component {
 
   getList() {
     const { list } = this.props
-    return list.map(item => <div className={styles.item} key={item.id}>{item.title}</div>)
+    return list.map(item => (
+      <div className={styles.item} key={item.id}>
+        {item.title}
+      </div>
+    ))
   }
 
   render() {
-    return <div className={styles.container}>{this.getList()}</div>
+    return (
+      <Fragment>
+        <Helmet>
+          <title>这是3zz的新闻页面 -- 丰富多彩的资讯</title>
+          <meta
+            name="description"
+            content="这是3zz的新闻页面 -- 丰富多彩的资讯"
+          />
+        </Helmet>
+        <div className={styles.container}>{this.getList()}</div>
+      </Fragment>
+    )
   }
 
   componentDidMount() {
